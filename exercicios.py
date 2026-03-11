@@ -161,6 +161,61 @@ tools = [
                 "required": ["nome"]
             }   
         }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "criar_evento",
+            "description": "Cria um evento",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "titulo": {
+                        "type": "string",
+                        "description": "Título do evento"
+                    },
+                    "data": {
+                        "type": "string",
+                        "description": "Data do evento"
+                    }
+                },
+                "required": ["titulo", "data"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "listar_eventos",
+            "description": "Lista todos os eventos",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "mostrar_todos": {
+                        "type": "boolean",
+                        "description": "Se deve mostrar todos os eventos ou apenas os eventos futuros"
+                    }
+                },
+                "required": ["mostrar_todos"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "buscar_clima",
+            "description": "Busca o clima de uma cidade",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "cidade": {
+                        "type": "string",
+                        "description": "Nome da cidade"
+                    }
+                },
+                "required": ["cidade"]
+            }
+        }
     }
 ]
 
@@ -197,6 +252,12 @@ def perguntar(pergunta: str):
         return buscar_produtos(**args)
     elif tool_name == "buscar_estoque":
         return buscar_estoque(**args)
+    elif tool_name == "criar_evento":
+        return criar_evento(**args)
+    elif tool_name == "listar_eventos":
+        return listar_eventos(**args)
+    elif tool_name == "buscar_clima":
+        return buscar_clima(**args)
     return message.content
 
 print(perguntar(input("Digite uma pergunta: ")))

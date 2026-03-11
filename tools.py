@@ -31,3 +31,26 @@ def buscar_estoque(nome):
     "teclado": 8
 }
     return estoque.get(nome, "Produto não encontrado")
+
+def criar_evento(titulo, data):
+    return f"Evento criado: {titulo} - {data}"
+
+def listar_eventos(mostrar_todos=True):
+    return [
+        {
+            "titulo": "Fazer o slide do trabalho do Victor",
+            "data": "2026-03-12"
+        },
+        {
+            "titulo": "Dominação mundial",
+            "data": "2026-06-07"
+        }
+    ]
+
+def buscar_clima(cidade):
+    clima = {
+        "sao paulo": "24°C e nublado",
+        "bauru": "30°C e ensolarado",
+        "curitiba": "18°C e chuvoso"
+    }
+    return clima.get(cidade.lower().strip(), "Cidade não encontrada")
