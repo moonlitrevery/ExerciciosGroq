@@ -127,6 +127,40 @@ tools = [
                 "required": ["fahrenheit"]
             }  
         }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "buscar_produtos",
+            "description": "Busca o preço de um produto",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "nome": {
+                        "type": "string",
+                        "description": "Nome do produto"
+                    }
+                },
+                "required": ["nome"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "buscar_estoque",
+            "description": "Busca o estoque de um produto",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "nome": {
+                        "type": "string",
+                        "description": "Nome do produto"
+                    }
+                },
+                "required": ["nome"]
+            }   
+        }
     }
 ]
 
@@ -159,6 +193,10 @@ def perguntar(pergunta: str):
         return converter_celsius_para_fahrenheit(**args)
     elif tool_name == "converter_fahrenheit_para_celsius":
         return converter_fahrenheit_para_celsius(**args)
+    elif tool_name == "buscar_produtos":
+        return buscar_produtos(**args)
+    elif tool_name == "buscar_estoque":
+        return buscar_estoque(**args)
     return message.content
 
 print(perguntar(input("Digite uma pergunta: ")))
